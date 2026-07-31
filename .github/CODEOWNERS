@@ -1,0 +1,5 @@
+* @tryretool/bfa-mcp
+
+/.github/ @tryretool/bfa-mcp
+/claude/ @tryretool/bfa-mcp
+/openai/ @tryretool/bfa-mcp
