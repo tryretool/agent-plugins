@@ -26,26 +26,47 @@ calls, or at session start.
 
 ## Network activity
 
-The plugin contacts three kinds of endpoint. Nothing else.
+The plugin talks to two hosts. Nothing else.
 
-**1. Your Retool organization, over MCP.** The MCP server is
-`<your-retool-url>/mcp` over HTTP. Every app and resource operation goes there.
+### Your own Retool host
 
-**2. The CLI core download.** The plugin ships a small launcher, not the CLI
-itself. The first `retool` command downloads a signed core of about 8 MB,
-verifies its signature, and caches it in `<workspace>/.retool/cli`. The launcher
-takes the core from your own Retool host at `/api/cli/manifest` when a host is
-selected. With no host selected it falls back to Retool's CDN at
-`https://cli.retool-edge.com`. These two fetches carry no credentials. They send
-an `X-Retool-CLI-Version` header, which is how Retool identifies CLI traffic in
-an access log.
+Everything the plugin does for you goes to the Retool URL you configured. That
+covers the MCP server at `/mcp`, and every `retool` CLI command:
 
-**3. One analytics event from `retool check`.** Inside a checkout that is linked
-to a Retool app, `retool check` sends a single bounded event to that same
-checkout's Retool host. No other command sends one. The event goes to your own
-organization, never to a third party.
+- Signing in, over the OAuth device flow at `/api/oauth2/device_authorization`
+  and `/api/oauth2/token`.
+- Reading and writing apps and resources, at `/api/apps`, `/api/resources`, and
+  `/api/pages/uuids/`.
+- `push`, `pull`, `clone`, and `publish`, which use the git transport and the app
+  APIs under `/api/ai/rr/git/v2/apps/`.
+- `pnpm install` inside a checkout, which resolves org packages through the
+  package proxy at `/api/ai/rr/npm/`.
+- The CLI core manifest at `/api/cli/manifest`.
+- One analytics event from `retool check` in a linked checkout, at
+  `/api/cli/check-event`.
 
-Turn every analytics header and request off with either switch:
+This list is illustrative, not a contract. New CLI features add endpoints. The
+guarantee is the host: your own Retool organization or instance, reached at the
+URL you configured.
+
+### Retool's CDN, for the CLI core only
+
+The plugin ships a small launcher, not the CLI itself. The first `retool` command
+downloads a signed core of about 8 MB, verifies its signature, and caches it in
+`<workspace>/.retool/cli`.
+
+The launcher takes that core from your own Retool host at `/api/cli/manifest`
+when a host is selected. Only when no host is selected does it fall back to
+Retool's CDN at `https://cli.retool-edge.com`. That is the one request that can
+reach a host other than your own. It carries no credentials. It sends an
+`X-Retool-CLI-Version` header, which is how Retool identifies CLI traffic in an
+access log.
+
+### Turning analytics off
+
+`retool check` inside a checkout linked to a Retool app sends a single bounded
+event to that same checkout's Retool host. No other command sends one. Either
+switch turns every analytics header and request off:
 
 ```bash
 export RETOOL_CLI_TELEMETRY=0
