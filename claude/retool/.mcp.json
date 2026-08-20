@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "retool": {
+      "type": "http",
+      "url": "${user_config.retool_url}/mcp"
+    }
+  }
+}
