@@ -68,10 +68,12 @@ whole `.retool/` directory from app source and Git commits. Bootstrap adds
 credentials stay ignored if Git is initialized later. In an existing
 repository, it also writes the repository's private `.git/info/exclude`. It
 refuses a workspace nested inside another repository; rerun it from that
-repository's root. The shim sets `NODE_USE_ENV_PROXY=1`, `RETOOL_HOST`,
-`RETOOL_CREDENTIALS_PATH`, and `RETOOL_CLI_STATE_DIR`. The host URL makes the
-first command install the core served by that Retool organization or instance,
-even before a login exists. Do not export these values separately.
+repository's root. The shim sets `NODE_USE_ENV_PROXY=1`,
+`RETOOL_CLI_AGENT=claude_cowork`, `RETOOL_HOST`, `RETOOL_CREDENTIALS_PATH`, and
+`RETOOL_CLI_STATE_DIR`. The entry-agent value is a bounded analytics label and
+contains no prompt, model, session, or file data. The host URL makes the first
+command install the core served by that Retool organization or instance, even
+before a login exists. Do not export these values separately.
 
 The bootstrap host URL binds this sandbox session to one Retool organization,
 instance, or—when Spaces is enabled—Space. To point the session somewhere else,
@@ -114,7 +116,14 @@ its identity:
 mkdir -p "$HOME/app/.retool"
 tar --exclude=.retool --exclude=node_modules -cf - . | tar -xf - -C "$HOME/app"
 cp ./.retool/app.json "$HOME/app/.retool/app.json"
-cd "$HOME/app" && pnpm install && retool check
+```
+
+Start a shell in the copied `$HOME/app` checkout, then run each command
+separately so the instructions work in every supported shell:
+
+```text
+pnpm install
+retool check
 ```
 
 Copy the whole checkout, not a list of paths. An app has files a list would miss:

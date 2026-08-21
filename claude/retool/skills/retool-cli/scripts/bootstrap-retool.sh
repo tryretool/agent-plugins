@@ -119,6 +119,7 @@ chmod 600 "$session_root/retool-host"
   printf '%s\n' '  exit 1'
   printf '%s\n' 'fi'
   printf '%s\n' 'export NODE_USE_ENV_PROXY="${NODE_USE_ENV_PROXY:-1}"'
+  printf '%s\n' 'export RETOOL_CLI_AGENT="${RETOOL_CLI_AGENT:-claude_cowork}"'
   printf '%s\n' 'export RETOOL_CREDENTIALS_PATH="${RETOOL_CREDENTIALS_PATH:-$workspace_root/.retool/credentials.json}"'
   printf '%s\n' 'export RETOOL_CLI_STATE_DIR="${RETOOL_CLI_STATE_DIR:-$workspace_root/.retool/cli}"'
   printf '%s\n' 'if [ -n "$retool_host" ]; then'
