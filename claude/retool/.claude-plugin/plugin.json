@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "retool",
+  "displayName": "Retool",
+  "description": "Build, check, push, and publish code-based Retool apps with the Retool CLI, and work with Retool through its MCP server.",
+  "author": {
+    "name": "Retool",
+    "url": "https://retool.com"
+  },
+  "homepage": "https://docs.retool.com",
+  "repository": "https://github.com/tryretool/agent-plugins",
+  "keywords": [
+    "retool",
+    "cli",
+    "mcp",
+    "react",
+    "internal-tools"
+  ],
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "retool_url": {
+      "type": "string",
+      "title": "Retool URL",
+      "description": "Your Retool base URL without a trailing slash, for example https://acme.retool.com.",
+      "required": true
+    }
+  },
+  "version": "0.1.4"
+}

@@ -25,6 +25,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the release contribution process.
 
 ## Support
 
-For product support, visit [Retool Support](https://retool.com/support).
+For product support, visit [Retool Support](https://docs.retool.com/support).
 
 For security issues, follow [SECURITY.md](SECURITY.md).
