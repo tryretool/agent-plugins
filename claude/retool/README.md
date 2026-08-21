@@ -87,12 +87,22 @@ export RETOOL_CLI_TELEMETRY=0
 export DO_NOT_TRACK=1
 ```
 
-## Data the CLI reads
+## How the event is labelled
 
-To label the event above, the CLI checks whether it is running under an agent. It
-reads `RETOOL_CLI_AGENT`, `CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_HOME`,
-`CODEX_SANDBOX`, and `CURSOR_TRACE_ID`, and it records one value from a fixed
-list. It keeps no prompt text and no session content.
+The event carries one label naming which agent ran the command, and nothing else
+about the session.
+
+This plugin's bootstrap script sets that label itself. It exports
+`RETOOL_CLI_AGENT=claude_cowork`, so a session started through the `retool-cli`
+skill reports as Cowork rather than being guessed at. The export defers to a value
+already in the environment, so setting `RETOOL_CLI_AGENT` yourself wins.
+
+Without that variable the CLI infers the label from the environment, reading
+`CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_HOME`, `CODEX_SANDBOX`, and
+`CURSOR_TRACE_ID`.
+
+Either way the recorded value comes from a fixed list, and it carries no prompt
+text, no model name, no file contents, and no session content.
 
 ## Credentials and files
 
