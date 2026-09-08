@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Retool MCP'
+  short_description: 'Work with live apps and resources in Retool'
+  brand_color: '#262626'
+  default_prompt: 'Show me what I can access in Retool.'
+policy:
+  allow_implicit_invocation: true

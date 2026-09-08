@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Retool Ready'
+  short_description: 'Build code-based Retool apps in the supported shape'
+  brand_color: '#262626'
+  default_prompt: 'Help me build a code-based Retool app.'
+policy:
+  allow_implicit_invocation: true
