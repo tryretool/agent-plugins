@@ -1,0 +1,43 @@
+{
+  "name": "retool",
+  "description": "Connect ChatGPT and Codex to Retool through a workspace app, with guidance for building code-based Retool apps.",
+  "author": {
+    "name": "Retool",
+    "email": "support@retool.com",
+    "url": "https://retool.com"
+  },
+  "homepage": "https://docs.retool.com",
+  "keywords": [
+    "retool",
+    "cli",
+    "mcp",
+    "internal-tools",
+    "react",
+    "developer-tools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Retool",
+    "shortDescription": "Build apps and work with Retool.",
+    "longDescription": "Connect to your Retool organization to work with apps and resources. Build code-based Retool apps in the supported shape, resolve check failures, and publish.",
+    "developerName": "Retool",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://retool.com",
+    "privacyPolicyURL": "https://docs.retool.com/docs/privacy-policy",
+    "termsOfServiceURL": "https://docs.retool.com/legal/customer-terms-of-service",
+    "defaultPrompt": [
+      "Show me the apps and resources I can access in Retool.",
+      "Help me build a code-based Retool app.",
+      "Review this Retool app and publish it when it is ready."
+    ],
+    "brandColor": "#262626",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
+  },
+  "version": "0.1.6"
+}
