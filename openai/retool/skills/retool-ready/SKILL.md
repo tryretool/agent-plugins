@@ -91,8 +91,9 @@ Publish through the surface selected for app creation. Do not switch surfaces
 only to publish.
 
 The MCP publish path asks you to review each mutating serverless function with
-the user. The CLI's `--approve-functions` flag approves them in a batch. Read
-the functions before you pass that flag.
+the user. The CLI's `--approve-function <path>` flag approves one function, and
+`--approve-functions` approves them all in a batch. Read the functions before
+you pass either flag.
 
 A thread branch has one writer. A local checkout on `retool-agent/<threadId>`
 and an MCP thread message both advance the same branch, and `retool push` is a
@@ -362,8 +363,10 @@ retool publish --identifier refunds-dashboard
 ```
 
 If a serverless function does mutating work, publish lists it as needing
-approval and blocks. Pass `--approve-functions` to approve and publish in one
-step (only when the mutations are expected).
+approval and blocks. Pass `--approve-function <path>` for each function you have
+read, or `--approve-functions` to approve them all in one step (only when the
+mutations are expected). Publish stays blocked while any function is still
+pending, so a partly approved commit never ships.
 
 ## File structure
 

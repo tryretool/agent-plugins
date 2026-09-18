@@ -35,9 +35,9 @@
       "Review this Retool app and publish it when it is ready."
     ],
     "brandColor": "#262626",
-    "composerIcon": "./assets/logo.png",
-    "logo": "./assets/logo.png",
-    "logoDark": "./assets/logo-dark.png"
+    "composerIcon": "./assets/composer-light.png",
+    "logo": "./assets/directory-light.png",
+    "logoDark": "./assets/directory-dark.png"
   },
-  "version": "0.1.6"
+  "version": "0.1.8"
 }
