@@ -4,7 +4,10 @@ Describe the generated plugin changes included in this release.
 
 ## Release
 
-- Plugin version:
+- Claude plugin version:
+- OpenAI plugin version:
+- [ ] The GitHub Release will attach both `retool-claude-plugin.zip` and
+      `retool-openai-plugin.zip`, including any plugin that did not change.
 
 ## Validation
 
