@@ -44,6 +44,8 @@ control. That covers the MCP server at `/mcp`, and every `retool` CLI command:
 - The CLI core manifest at `/api/cli/manifest`.
 - One analytics event from `retool check` in a linked checkout, at
   `/api/cli/check-event`.
+- One analytics event from an accepted `retool push` that newly references
+  resources, naming them at `/api/cli/push-resource-event`.
 
 This endpoint list is illustrative, not a contract. New CLI features add
 endpoints.
@@ -63,6 +65,11 @@ checkout root that pins public packages to `https://registry.npmjs.org/` on
 purpose, and routes only your organization's own scope to Retool. This is
 ordinary package installation, and it is the largest share of the plugin's
 requests by count.
+
+If your organization configured its own npm registries in Retool settings, the
+`.npmrc` routes those scopes to them instead, and a default registry replaces
+npmjs.org for public packages. The CLI writes only the registry URLs. pnpm uses
+whatever credentials for them you keep in your user npm config.
 
 ### 3. `cli.retool-edge.com`, for the CLI core only
 
@@ -98,8 +105,8 @@ skill reports as Cowork rather than being guessed at. The export defers to a val
 already in the environment, so setting `RETOOL_CLI_AGENT` yourself wins.
 
 Without that variable the CLI infers the label from the environment, reading
-`CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_HOME`, `CODEX_SANDBOX`, and
-`CURSOR_TRACE_ID`.
+`CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_THREAD_ID`, `CODEX_SESSION_ID`,
+`CODEX_SANDBOX`, `CURSOR_AGENT`, and `CURSOR_TRACE_ID`.
 
 Either way the recorded value comes from a fixed list, and it carries no prompt
 text, no model name, no file contents, and no session content.
