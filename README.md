@@ -18,6 +18,9 @@ publication still happens through the OpenAI Platform.
 - Each release must identify the plugin version.
 - Commit unpacked plugin directories so changes can be reviewed.
 - Attach generated zip files to GitHub Releases rather than committing them.
+- Every GitHub Release attaches the latest zip of every plugin,
+  `retool-claude-plugin.zip` and `retool-openai-plugin.zip`, even when one of
+  them did not change. Reuse an unchanged plugin's zip from the previous release.
 - Never commit credentials, customer data, private Retool URLs, or deployment
   challenge tokens.
 
