@@ -42,10 +42,6 @@ control. That covers the MCP server at `/mcp`, and every `retool` CLI command:
 - Your organization's own library packages, through the package registry at
   `/api/ai/rr/npm/`.
 - The CLI core manifest at `/api/cli/manifest`.
-- One analytics event from `retool check` in a linked checkout, at
-  `/api/cli/check-event`.
-- One analytics event from an accepted `retool push` that newly references
-  resources, naming them at `/api/cli/push-resource-event`.
 
 This endpoint list is illustrative, not a contract. New CLI features add
 endpoints.
