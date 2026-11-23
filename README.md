@@ -12,6 +12,13 @@ This repository contains the public distributions of Retool's agent plugins.
 The OpenAI files in this repository are a public release record. OpenAI
 publication still happens through the OpenAI Platform.
 
+## Skill file
+
+The root [`SKILL.md`](SKILL.md) is the public setup skill served at
+[retool.com/SKILL.md](https://retool.com/SKILL.md). It is hand-maintained here,
+and the web repo proxies it from this repository, so changes merged to `main`
+appear at that URL within an hour without redeploying.
+
 ## Repository policy
 
 - Do not edit generated plugin files by hand.
