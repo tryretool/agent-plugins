@@ -15,7 +15,7 @@ publication still happens through the OpenAI Platform.
 ## Skill file
 
 The root [`SKILL.md`](SKILL.md) is the public setup skill served at
-[retool.com/SKILL.md](https://retool.com/SKILL.md). It is hand-maintained here,
+[retool.com/skills/build/SKILL.md](https://retool.com/skills/build/SKILL.md). It is hand-maintained here,
 and the web repo proxies it from this repository, so changes merged to `main`
 appear at that URL within an hour without redeploying.
 
